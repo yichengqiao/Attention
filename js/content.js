@@ -134,12 +134,8 @@ const contentData = {
                 </div>
 
                 <div class="diagram-container">
-                    <div class="diagram-placeholder">
-                        <i class="fas fa-project-diagram" style="font-size: 3rem; margin-bottom: 1rem;"></i>
-                        <p>Q, K, V 示意图</p>
-                        <p style="font-size: 0.9rem;">Query 与 Keys 计算相似度 → 得到权重 → 加权 Values</p>
-                    </div>
-                    <div class="diagram-caption">图示：注意力机制的基本流程</div>
+                    <img src="assets/diagrams/qkv-concept.svg" alt="Q, K, V 概念示意图" style="width: 100%; max-width: 800px; height: auto;">
+                    <div class="diagram-caption">图示：注意力机制的基本流程 - Q、K、V的作用</div>
                 </div>
             `
         },
@@ -177,12 +173,8 @@ const contentData = {
                 </div>
 
                 <div class="diagram-container">
-                    <div class="diagram-placeholder">
-                        <i class="fas fa-project-diagram" style="font-size: 3rem; margin-bottom: 1rem;"></i>
-                        <p>Q, K, V Illustration</p>
-                        <p style="font-size: 0.9rem;">Query matches Keys → Get weights → Weight Values</p>
-                    </div>
-                    <div class="diagram-caption">Figure: Basic flow of attention mechanism</div>
+                    <img src="assets/diagrams/qkv-concept.svg" alt="Q, K, V Concept Illustration" style="width: 100%; max-width: 800px; height: auto;">
+                    <div class="diagram-caption">Figure: Basic flow of attention mechanism - Role of Q, K, V</div>
                 </div>
             `
         }
@@ -898,11 +890,7 @@ class ScaledDotProductAttention(nn.Module):
                 </div>
 
                 <div class="diagram-container">
-                    <div class="diagram-placeholder">
-                        <i class="fas fa-cubes" style="font-size: 3rem; margin-bottom: 1rem;"></i>
-                        <p>Transformer 架构示意图</p>
-                        <p style="font-size: 0.9rem;">编码器（Encoder）+ 解码器（Decoder）</p>
-                    </div>
+                    <img src="assets/diagrams/transformer-architecture.svg" alt="Transformer 架构" style="width: 100%; max-width: 900px; height: auto;">
                     <div class="diagram-caption">图示：Transformer 的编码器-解码器架构</div>
                 </div>
 
@@ -943,11 +931,7 @@ class ScaledDotProductAttention(nn.Module):
                 </div>
 
                 <div class="diagram-container">
-                    <div class="diagram-placeholder">
-                        <i class="fas fa-cubes" style="font-size: 3rem; margin-bottom: 1rem;"></i>
-                        <p>Transformer Architecture</p>
-                        <p style="font-size: 0.9rem;">Encoder + Decoder</p>
-                    </div>
+                    <img src="assets/diagrams/transformer-architecture.svg" alt="Transformer Architecture" style="width: 100%; max-width: 900px; height: auto;">
                     <div class="diagram-caption">Figure: Transformer encoder-decoder architecture</div>
                 </div>
 
@@ -1050,12 +1034,8 @@ class SelfAttention(nn.Module):
                 </div>
 
                 <div class="diagram-container">
-                    <div class="diagram-placeholder">
-                        <i class="fas fa-project-diagram" style="font-size: 3rem; margin-bottom: 1rem;"></i>
-                        <p>自注意力可视化</p>
-                        <p style="font-size: 0.9rem;">每个 token 关注所有 token（包括自己）</p>
-                    </div>
-                    <div class="diagram-caption">图示：自注意力的连接模式</div>
+                    <img src="assets/diagrams/self-attention.svg" alt="Self-Attention 自注意力机制" style="width: 100%; max-width: 800px; height: auto;">
+                    <div class="diagram-caption">图示：自注意力的连接模式 - 序列内部的全局关注</div>
                 </div>
 
                 <div class="highlight-box">
@@ -1159,12 +1139,8 @@ class SelfAttention(nn.Module):
                 </div>
 
                 <div class="diagram-container">
-                    <div class="diagram-placeholder">
-                        <i class="fas fa-project-diagram" style="font-size: 3rem; margin-bottom: 1rem;"></i>
-                        <p>Self-Attention Visualization</p>
-                        <p style="font-size: 0.9rem;">Each token attends to all tokens (including itself)</p>
-                    </div>
-                    <div class="diagram-caption">Figure: Connection pattern of self-attention</div>
+                    <img src="assets/diagrams/self-attention.svg" alt="Self-Attention Mechanism" style="width: 100%; max-width: 800px; height: auto;">
+                    <div class="diagram-caption">Figure: Connection pattern of self-attention - Global attention within sequence</div>
                 </div>
 
                 <div class="highlight-box">
@@ -1543,12 +1519,8 @@ class MultiHeadAttention(nn.Module):
                 </div>
 
                 <div class="diagram-container">
-                    <div class="diagram-placeholder">
-                        <i class="fas fa-layer-group" style="font-size: 3rem; margin-bottom: 1rem;"></i>
-                        <p>多头注意力架构</p>
-                        <p style="font-size: 0.9rem;">输入 → 分割成 h 个头 → 并行注意力 → 拼接 → 输出投影</p>
-                    </div>
-                    <div class="diagram-caption">图示：多头注意力的计算流程</div>
+                    <img src="assets/diagrams/multi-head-attention.svg" alt="Multi-Head Attention 多头注意力" style="width: 100%; max-width: 800px; height: auto;">
+                    <div class="diagram-caption">图示：多头注意力的计算流程 - 并行处理多个视角</div>
                 </div>
 
                 <div class="tags">
@@ -1692,12 +1664,8 @@ class MultiHeadAttention(nn.Module):
                 </div>
 
                 <div class="diagram-container">
-                    <div class="diagram-placeholder">
-                        <i class="fas fa-layer-group" style="font-size: 3rem; margin-bottom: 1rem;"></i>
-                        <p>Multi-Head Attention Architecture</p>
-                        <p style="font-size: 0.9rem;">Input → Split into h heads → Parallel attention → Concat → Output projection</p>
-                    </div>
-                    <div class="diagram-caption">Figure: Multi-head attention computation flow</div>
+                    <img src="assets/diagrams/multi-head-attention.svg" alt="Multi-Head Attention Architecture" style="width: 100%; max-width: 800px; height: auto;">
+                    <div class="diagram-caption">Figure: Multi-head attention computation flow - Processing multiple perspectives in parallel</div>
                 </div>
 
                 <div class="tags">

@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" style="background: transparent;">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ec4899;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f97316;stop-opacity:1" />
+    </linearGradient>
+    <marker id="arrowblue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#6366f1" />
+    </marker>
+    <marker id="arrowpink" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ec4899" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#f1f5f9" text-anchor="middle">
+    Cross-Attention 交叉注意力
+  </text>
+  <text x="400" y="65" font-family="Arial, sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle">
+    连接两个不同的序列 | Connecting Different Sequences
+  </text>
+
+  <!-- Left sequence (Decoder / Query source) -->
+  <g id="sequence-A">
+    <rect x="50" y="120" width="250" height="100" rx="10" fill="url(#grad1)" opacity="0.6" stroke="#6366f1" stroke-width="2"/>
+    <text x="175" y="150" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#f1f5f9" text-anchor="middle">
+      序列 A (解码器)
+    </text>
+    <text x="175" y="175" font-family="Arial, sans-serif" font-size="14" fill="#cbd5e1" text-anchor="middle">
+      Sequence A (Decoder)
+    </text>
+    <text x="175" y="200" font-family="Arial, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">
+      例如: 翻译中的目标语言
+    </text>
+  </g>
+
+  <!-- Right sequence (Encoder / Key, Value source) -->
+  <g id="sequence-B">
+    <rect x="500" y="120" width="250" height="100" rx="10" fill="url(#grad2)" opacity="0.6" stroke="#ec4899" stroke-width="2"/>
+    <text x="625" y="150" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#f1f5f9" text-anchor="middle">
+      序列 B (编码器)
+    </text>
+    <text x="625" y="175" font-family="Arial, sans-serif" font-size="14" fill="#cbd5e1" text-anchor="middle">
+      Sequence B (Encoder)
+    </text>
+    <text x="625" y="200" font-family="Arial, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">
+      例如: 翻译中的源语言
+    </text>
+  </g>
+
+  <!-- Q, K, V Generation -->
+  <g id="qkv-gen">
+    <!-- Query from A -->
+    <path d="M 175 220 L 175 280" stroke="#6366f1" stroke-width="3" marker-end="url(#arrowblue)"/>
+    <rect x="100" y="290" width="150" height="70" rx="8" fill="#6366f1" opacity="0.5"/>
+    <text x="175" y="320" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#f1f5f9" text-anchor="middle">
+      Query (Q)
+    </text>
+    <text x="175" y="345" font-family="Arial, sans-serif" font-size="12" fill="#cbd5e1" text-anchor="middle">
+      来自序列A
+    </text>
+
+    <!-- Key and Value from B -->
+    <path d="M 625 220 L 625 250 L 500 250 L 500 280" stroke="#ec4899" stroke-width="3" marker-end="url(#arrowpink)"/>
+    <path d="M 625 220 L 625 250 L 650 250 L 650 280" stroke="#ec4899" stroke-width="3" marker-end="url(#arrowpink)"/>
+
+    <rect x="400" y="290" width="150" height="70" rx="8" fill="#ec4899" opacity="0.5"/>
+    <text x="475" y="320" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#f1f5f9" text-anchor="middle">
+      Key (K)
+    </text>
+    <text x="475" y="345" font-family="Arial, sans-serif" font-size="12" fill="#cbd5e1" text-anchor="middle">
+      来自序列B
+    </text>
+
+    <rect x="575" y="290" width="150" height="70" rx="8" fill="#ec4899" opacity="0.5"/>
+    <text x="650" y="320" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#f1f5f9" text-anchor="middle">
+      Value (V)
+    </text>
+    <text x="650" y="345" font-family="Arial, sans-serif" font-size="12" fill="#cbd5e1" text-anchor="middle">
+      来自序列B
+    </text>
+  </g>
+
+  <!-- Attention computation -->
+  <g id="attention">
+    <path d="M 175 360 L 175 400 L 400 400" stroke="#6366f1" stroke-width="2"/>
+    <path d="M 475 360 L 475 400 L 400 400" stroke="#ec4899" stroke-width="2"/>
+    <path d="M 650 360 L 650 430 L 480 430" stroke="#ec4899" stroke-width="2"/>
+
+    <rect x="300" y="410" width="200" height="80" rx="10" fill="url(#grad1)" opacity="0.7" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="400" y="440" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#f1f5f9" text-anchor="middle">
+      Attention Score
+    </text>
+    <text x="400" y="465" font-family="Arial, sans-serif" font-size="12" fill="#cbd5e1" text-anchor="middle">
+      softmax(Q·K^T / √d_k)
+    </text>
+    <text x="400" y="485" font-family="Arial, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">
+      序列A中每个位置关注序列B
+    </text>
+  </g>
+
+  <!-- Output -->
+  <path d="M 400 490 L 400 520" stroke="#8b5cf6" stroke-width="3" marker-end="url(#arrowblue)"/>
+
+  <rect x="250" y="530" width="300" height="60" rx="10" fill="url(#grad2)" opacity="0.8"/>
+  <text x="400" y="555" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#f1f5f9" text-anchor="middle">
+    Output
+  </text>
+  <text x="400" y="578" font-family="Arial, sans-serif" font-size="12" fill="#cbd5e1" text-anchor="middle">
+    CrossAttention = softmax(QK^T/√d_k) × V
+  </text>
+
+  <!-- Use case examples -->
+  <text x="50" y="100" font-family="Arial, sans-serif" font-size="12" fill="#6366f1" font-style="italic">
+    ← Query来源
+  </text>
+  <text x="680" y="100" font-family="Arial, sans-serif" font-size="12" fill="#ec4899" font-style="italic" text-anchor="end">
+    Key/Value来源 →
+  </text>
+</svg>
