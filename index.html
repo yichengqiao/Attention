@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注意力机制原理讲解 | Attention Mechanism Explained</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-brain"></i>
+                <span data-i18n="siteTitle">注意力机制</span>
+            </div>
+            <div class="nav-controls">
+                <button id="langToggle" class="lang-toggle">
+                    <i class="fas fa-language"></i>
+                    <span id="langText">EN</span>
+                </button>
+                <button id="menuToggle" class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 侧边栏 -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-content">
+            <h3 data-i18n="tableOfContents">目录</h3>
+            <nav class="toc">
+                <div class="toc-section">
+                    <div class="toc-item" data-section="intro">
+                        <i class="fas fa-home"></i>
+                        <span data-i18n="nav.intro">简介</span>
+                    </div>
+                </div>
+                <div class="toc-section">
+                    <div class="toc-title" data-i18n="nav.fundamental">1. 基础注意力</div>
+                    <div class="toc-item" data-section="fundamental">
+                        <span data-i18n="nav.fundamentalOverview">概览</span>
+                    </div>
+                    <div class="toc-item" data-section="dot-product">
+                        <span data-i18n="nav.dotProduct">点积注意力</span>
+                    </div>
+                    <div class="toc-item" data-section="additive">
+                        <span data-i18n="nav.additive">加性注意力</span>
+                    </div>
+                    <div class="toc-item" data-section="scaled-dot">
+                        <span data-i18n="nav.scaledDot">缩放点积注意力</span>
+                    </div>
+                </div>
+                <div class="toc-section">
+                    <div class="toc-title" data-i18n="nav.transformer">2. Transformer 核心</div>
+                    <div class="toc-item" data-section="transformer">
+                        <span data-i18n="nav.transformerOverview">概览</span>
+                    </div>
+                    <div class="toc-item" data-section="self-attention">
+                        <span data-i18n="nav.selfAttention">自注意力</span>
+                    </div>
+                    <div class="toc-item" data-section="cross-attention">
+                        <span data-i18n="nav.crossAttention">交叉注意力</span>
+                    </div>
+                    <div class="toc-item" data-section="multi-head">
+                        <span data-i18n="nav.multiHead">多头注意力</span>
+                    </div>
+                    <div class="toc-item" data-section="masked-attention">
+                        <span data-i18n="nav.masked">因果掩码注意力</span>
+                    </div>
+                </div>
+                <div class="toc-section">
+                    <div class="toc-title" data-i18n="nav.efficient">3. 高效注意力</div>
+                    <div class="toc-item" data-section="efficient">
+                        <span data-i18n="nav.efficientOverview">概览</span>
+                    </div>
+                    <div class="toc-item" data-section="sparse">
+                        <span data-i18n="nav.sparse">稀疏注意力</span>
+                    </div>
+                    <div class="toc-item" data-section="linear">
+                        <span data-i18n="nav.linear">线性注意力</span>
+                    </div>
+                    <div class="toc-item" data-section="flash">
+                        <span data-i18n="nav.flash">FlashAttention</span>
+                    </div>
+                </div>
+                <div class="toc-section">
+                    <div class="toc-title" data-i18n="nav.multimodal">4. 多模态注意力</div>
+                    <div class="toc-item" data-section="multimodal">
+                        <span data-i18n="nav.multimodalOverview">概览</span>
+                    </div>
+                    <div class="toc-item" data-section="vision-language">
+                        <span data-i18n="nav.visionLanguage">图文注意力</span>
+                    </div>
+                </div>
+                <div class="toc-section">
+                    <div class="toc-title" data-i18n="nav.vision">5. 视觉注意力</div>
+                    <div class="toc-item" data-section="vision">
+                        <span data-i18n="nav.visionOverview">概览</span>
+                    </div>
+                    <div class="toc-item" data-section="vit">
+                        <span data-i18n="nav.vit">ViT 全局注意力</span>
+                    </div>
+                    <div class="toc-item" data-section="swin">
+                        <span data-i18n="nav.swin">Swin Transformer</span>
+                    </div>
+                    <div class="toc-item" data-section="deformable">
+                        <span data-i18n="nav.deformable">可变形注意力</span>
+                    </div>
+                </div>
+                <div class="toc-section">
+                    <div class="toc-title" data-i18n="nav.temporal">6. 时间序列注意力</div>
+                    <div class="toc-item" data-section="temporal">
+                        <span data-i18n="nav.temporalOverview">概览</span>
+                    </div>
+                </div>
+                <div class="toc-section">
+                    <div class="toc-title" data-i18n="nav.spatial3d">7. 3D 空间注意力</div>
+                    <div class="toc-item" data-section="spatial3d">
+                        <span data-i18n="nav.spatial3dOverview">概览</span>
+                    </div>
+                </div>
+                <div class="toc-section">
+                    <div class="toc-title" data-i18n="nav.advanced">8. 扩展注意力</div>
+                    <div class="toc-item" data-section="advanced">
+                        <span data-i18n="nav.advancedOverview">概览</span>
+                    </div>
+                </div>
+                <div class="toc-section">
+                    <div class="toc-title" data-i18n="nav.applications">9. 应用场景</div>
+                    <div class="toc-item" data-section="applications">
+                        <span data-i18n="nav.applicationsOverview">概览</span>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </aside>
+
+    <!-- 主内容区 -->
+    <main class="main-content" id="mainContent">
+        <!-- 内容将通过 JavaScript 动态加载 -->
+    </main>
+
+    <!-- 回到顶部按钮 -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="js/i18n.js"></script>
+    <script src="js/content.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
